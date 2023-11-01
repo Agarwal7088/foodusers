@@ -1,18 +1,25 @@
 import 'package:flutter/material.dart';
+import 'package:food_users_app/mainscreens/menus_screen.dart';
 import 'package:food_users_app/models/sellers.dart';
 
-class InfoDesignWidget extends StatefulWidget {
+class SellersDesignWidget extends StatefulWidget {
   Sellers? model;
   BuildContext? context;
-  InfoDesignWidget({this.model, this.context});
+  SellersDesignWidget({this.model, this.context});
   @override
-  _InfoDesignWidgetState createState() => _InfoDesignWidgetState();
+  _SellersDesignWidgetState createState() => _SellersDesignWidgetState();
 }
 
-class _InfoDesignWidgetState extends State<InfoDesignWidget> {
+class _SellersDesignWidgetState extends State<SellersDesignWidget> {
   @override
   Widget build(BuildContext context) {
     return InkWell(
+      onTap: () {
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (c) => MenusScreen(model: widget.model)));
+      },
       splashColor: Colors.amber,
       child: Padding(
         padding: EdgeInsets.all(5.0),
