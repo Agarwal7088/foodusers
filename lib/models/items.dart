@@ -28,7 +28,7 @@ class Items {
     sellerUID = json['sellerUID'];
     itemID = json['itemID'];
     title = json['title'];
-    shortInfo = json['shortInto'];
+    shortInfo = json['shortInfo'];
     publishedDate = json['publishedDate'];
     thumbnailUrl = json['thumbnailUrl'];
     longDescription = json['longDescription'];
@@ -40,7 +40,7 @@ class Items {
     data['menuID'] = menuID;
     data['sellerUID'] = sellerUID;
     data['itemID'] = itemID;
-    data[' title'] = title;
+    data['title'] = title;
     data['shortInfo'] = shortInfo;
     data['price'] = price;
     data['publishedDate'] = publishedDate;
@@ -49,5 +49,21 @@ class Items {
     data['status'] = status;
 
     return data;
+  }
+
+  @override
+  String toString() {
+    return '''
+menuID  $menuID
+sellerUID  $sellerUID
+itemID  $itemID
+title  $title
+shortInfo  $shortInfo
+price  $price
+publishedDate  $publishedDate
+thumbnailUrl  $thumbnailUrl
+longDescription  $longDescription
+status  $status
+''';
   }
 }

@@ -118,22 +118,22 @@ class _HomeScreenState extends State<HomeScreen> {
                           child: CircularProgress(),
                         ),
                       )
-                    : SliverStaggeredGrid.countBuilder(
-                        crossAxisCount: 1,
-                        staggeredTileBuilder: (c) => StaggeredTile.fit(1),
-                        itemBuilder: (context, index) {
-                          Sellers sModel = Sellers.fromJson(
-                              snapshot.data!.docs[index].data()!
-                                  as Map<String, dynamic>);
-                          //design for display sellers-cafes-restaurants
-                          return SellersDesignWidget(
-                            model: sModel,
-                            context: context,
-                          );
-                        },
-                        itemCount: snapshot.data!.docs.length,
+                    : SliverList(
+                        delegate: SliverChildBuilderDelegate(
+                          (context, index) {
+                            Sellers sModel = Sellers.fromJson(
+                                snapshot.data!.docs[index].data()!
+                                    as Map<String, dynamic>);
+                            //design for display sellers-cafes-restaurants
+                            return SellersDesignWidget(
+                              model: sModel,
+                              context: context,
+                            );
+                          },
+                          childCount: snapshot.data!.docs.length,
+                        ),
                       );
-              })
+              }),
         ],
       ),
     );

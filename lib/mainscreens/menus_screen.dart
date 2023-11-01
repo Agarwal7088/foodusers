@@ -48,6 +48,7 @@ class _MenusScreenState extends State<MenusScreen> {
         slivers: [
           SliverPersistentHeader(
             pinned: true,
+            floating: false,
             delegate: TextWidgetHeader(
                 title: widget.model!.sellerName.toString() + " Menus"),
           ),
