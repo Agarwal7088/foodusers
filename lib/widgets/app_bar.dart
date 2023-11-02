@@ -1,10 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:food_users_app/mainscreens/cart_screen.dart';
 
-class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
+class MyAppBar extends StatefulWidget implements PreferredSizeWidget {
   final PreferredSizeWidget? bottom;
+  final String? sellerUID;
 
-  MyAppBar({this.bottom});
+  MyAppBar({this.bottom, this.sellerUID});
 
+  @override
+  State<MyAppBar> createState() => _MyAppBarState();
+
+  @override
+  // TODO: implement preferredSize
+  Size get preferredSize => bottom == null
+      ? Size(56, AppBar().preferredSize.height)
+      : Size(56, 80 + AppBar().preferredSize.height);
+}
+
+class _MyAppBarState extends State<MyAppBar> {
   @override
   Widget build(BuildContext context) {
     return AppBar(
@@ -44,6 +57,12 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
               ),
               onPressed: () {
                 // send user to cart screen
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (c) => CartScreen(
+                              sellerUID: widget.sellerUID,
+                            )));
               },
             ),
             Positioned(
@@ -74,7 +93,7 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
   }
 
   @override
-  Size get preferredSize => bottom == null
+  Size get preferredSize => widget.bottom == null
       ? Size(56, AppBar().preferredSize.height)
       : Size(56, 80 + AppBar().preferredSize.height);
 }

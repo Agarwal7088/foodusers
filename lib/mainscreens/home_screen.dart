@@ -1,8 +1,8 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
-import 'package:food_users_app/global/global.dart';
+// import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
+// import 'package:food_users_app/global/global.dart';
 import 'package:food_users_app/models/sellers.dart';
 import 'package:food_users_app/widgets/app_drawer.dart';
 import 'package:food_users_app/widgets/sellers_design.dart';
