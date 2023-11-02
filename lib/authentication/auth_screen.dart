@@ -29,7 +29,7 @@ class _authscreenState extends State<authscreen> {
             ),
             automaticallyImplyLeading: false,
             title: const Text(
-              "iFOOD",
+              "Get Fed",
               style: TextStyle(
                 fontSize: 50,
                 color: Colors.white,

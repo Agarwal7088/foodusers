@@ -65,7 +65,7 @@ class _MySplashScreenState extends State<MySplashScreen> {
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Text(
-                  "Order Food Online With iFood.",
+                  "Order Food Online With Get Fed.",
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     color: Colors.white,

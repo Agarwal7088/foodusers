@@ -38,7 +38,7 @@ class _MenusScreenState extends State<MenusScreen> {
           )),
         ),
         title: Text(
-          "iFood",
+          "Get Fed",
           style: TextStyle(fontSize: 45, fontFamily: "Signatra"),
         ),
         centerTitle: true,
