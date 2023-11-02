@@ -60,7 +60,10 @@ class _HomeScreenState extends State<HomeScreen> {
             tileMode: TileMode.clamp,
           )),
         ),
-        title: Text(sharedPreferences!.getString("name")!),
+        title: Text(
+          'Get Fed',
+          style: TextStyle(fontSize: 45, fontFamily: "Signatra"),
+        ),
         centerTitle: true,
         //automaticallyImplyLeading: true,
       ),
