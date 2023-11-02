@@ -1,6 +1,8 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:food_users_app/assistantMethods/cart_Item_counter.dart';
 import 'package:food_users_app/firebase_options.dart';
+import 'package:provider/provider.dart';
 
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -23,14 +25,18 @@ class MyApp extends StatelessWidget {
     // return MaterialApp(debugShowCheckedModeBanner: false,title:" Food Delivery" ,theme: ThemeData(primarySwatch: Colors.blue),
     // home: Scaffold(),
     // );
-    return MaterialApp(
-//title:  MaterialApp(
-      title: 'Users App',
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        primaryColor: Colors.blue,
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (c) => CartItemCounter()),
+      ],
+      child: MaterialApp(
+        title: 'Riders App',
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(
+          primarySwatch: Colors.blue,
+        ),
+        home: const MySplashScreen(),
       ),
-      home: MySplashScreen(),
     );
   }
 }

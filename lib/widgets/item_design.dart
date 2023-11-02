@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:food_users_app/mainscreens/item_detail_screen.dart';
 import 'package:food_users_app/models/items.dart';
 //import 'package:food_users_app/models/sellers.dart';
 
@@ -14,6 +15,14 @@ class _ItemsDesignWidgetState extends State<ItemsDesignWidget> {
   @override
   Widget build(BuildContext context) {
     return InkWell(
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (c) => ItemDetailsScreen(model: widget.model),
+          ),
+        );
+      },
       splashColor: Colors.amber,
       child: Padding(
         padding: EdgeInsets.all(5.0),
