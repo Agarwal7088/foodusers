@@ -2,17 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:food_users_app/models/items.dart';
 
 class CartItemDesign extends StatefulWidget {
-  final Items model;
-  BuildContext context;
-  final List<int>? separateItemsQuantitiesList;
+  final Items? model;
+  BuildContext? context;
+  final int? quanNumber;
+
   CartItemDesign({
-    required this.model,
-    required this.context,
-    this.separateItemsQuantitiesList,
+    this.model,
+    this.context,
+    this.quanNumber,
   });
 
   @override
-  State<CartItemDesign> createState() => _CartItemDesignState();
+  _CartItemDesignState createState() => _CartItemDesignState();
 }
 
 class _CartItemDesignState extends State<CartItemDesign> {
@@ -23,74 +24,86 @@ class _CartItemDesignState extends State<CartItemDesign> {
       child: Padding(
         padding: const EdgeInsets.all(6.0),
         child: Container(
-          height: 165,
+          height: 100,
           width: MediaQuery.of(context).size.width,
           child: Row(
             children: [
+              //image
               Image.network(
                 widget.model!.thumbnailUrl!,
                 width: 140,
                 height: 120,
               ),
-              SizedBox(
+
+              const SizedBox(
                 width: 6,
               ),
+
+              //title
+              //quantity number
+              //price
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisSize: MainAxisSize.min,
                 children: [
+                  //title
                   Text(
                     widget.model!.title!,
-                    style: TextStyle(
-                        color: Colors.black, fontSize: 16, fontFamily: "Kiwi"),
+                    style: const TextStyle(
+                      color: Colors.black,
+                      fontSize: 16,
+                      fontFamily: "Kiwi",
+                    ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 1,
                   ),
+
+                  //quantity number // x 7
                   Row(
                     children: [
-                      Text(
+                      const Text(
                         "x ",
                         style: TextStyle(
-                            color: Colors.black,
-                            fontSize: 16,
-                            fontFamily: "Kiwi"),
+                          color: Colors.black,
+                          fontSize: 25,
+                          fontFamily: "Acme",
+                        ),
                       ),
                       Text(
-                        widget.separateItemsQuantitiesList.toString(),
-                        style: TextStyle(
-                            color: Colors.black,
-                            fontSize: 25,
-                            fontFamily: "Acne"),
+                        widget.quanNumber.toString(),
+                        style: const TextStyle(
+                          color: Colors.black,
+                          fontSize: 25,
+                          fontFamily: "Acme",
+                        ),
                       ),
                     ],
                   ),
+
+                  //price
                   Row(
                     children: [
-                      Text(
+                      const Text(
                         "Price: ",
                         style: TextStyle(
-                            color: Colors.black,
-                            fontSize: 16,
-                            fontFamily: "Kiwi"),
+                          fontSize: 15,
+                          color: Colors.grey,
+                        ),
                       ),
-                      Text(
-                        "c ",
-                        style: TextStyle(
-                            color: Colors.black,
-                            fontSize: 16,
-                            fontFamily: "Kiwi"),
+                      const Text(
+                        "₹ ",
+                        style: TextStyle(color: Colors.blue, fontSize: 16.0),
                       ),
-                      Text(
-                        widget.model!.price.toString(),
-                        style: TextStyle(
-                            color: Colors.black,
+                      Text(widget.model!.price.toString(),
+                          style: const TextStyle(
                             fontSize: 16,
-                            fontFamily: "Kiwi"),
-                      ),
+                            color: Colors.blue,
+                          )),
                     ],
-                  )
+                  ),
                 ],
-              )
+              ),
             ],
           ),
         ),

@@ -1,13 +1,13 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:food_users_app/assistantMethods/address_changer.dart';
 import 'package:food_users_app/assistantMethods/cart_Item_counter.dart';
+import 'package:food_users_app/assistantMethods/total_amount.dart';
 import 'package:food_users_app/firebase_options.dart';
 import 'package:provider/provider.dart';
-
 import 'package:shared_preferences/shared_preferences.dart';
-
 import 'global/global.dart';
-import 'splashscreen/spash_screen.dart';
+import 'splashScreen/splash_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -18,16 +18,15 @@ void main() async {
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  const MyApp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    // return MaterialApp(debugShowCheckedModeBanner: false,title:" Food Delivery" ,theme: ThemeData(primarySwatch: Colors.blue),
-    // home: Scaffold(),
-    // );
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (c) => CartItemCounter()),
+        ChangeNotifierProvider(create: (c) => TotalAmount()),
+        ChangeNotifierProvider(create: (c) => AddressChanger()),
       ],
       child: MaterialApp(
         title: 'Riders App',

@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:food_users_app/mainScreens/menus_screen.dart';
-import 'package:food_users_app/models/sellers.dart';
+import 'package:food_users_app/mainScreens/item_detail_screen.dart';
+import 'package:food_users_app/models/items.dart';
 
-class SellersDesignWidget extends StatefulWidget {
-  Sellers? model;
+class ItemsDesignWidget extends StatefulWidget {
+  Items? model;
   BuildContext? context;
 
-  SellersDesignWidget({this.model, this.context});
+  ItemsDesignWidget({this.model, this.context});
 
   @override
-  _SellersDesignWidgetState createState() => _SellersDesignWidgetState();
+  _ItemsDesignWidgetState createState() => _ItemsDesignWidgetState();
 }
 
-class _SellersDesignWidgetState extends State<SellersDesignWidget> {
+class _ItemsDesignWidgetState extends State<ItemsDesignWidget> {
   @override
   Widget build(BuildContext context) {
     return InkWell(
@@ -20,7 +20,7 @@ class _SellersDesignWidgetState extends State<SellersDesignWidget> {
         Navigator.push(
             context,
             MaterialPageRoute(
-                builder: (c) => MenusScreen(model: widget.model)));
+                builder: (c) => ItemDetailsScreen(model: widget.model)));
       },
       splashColor: Colors.amber,
       child: Padding(
@@ -36,7 +36,7 @@ class _SellersDesignWidgetState extends State<SellersDesignWidget> {
                 color: Colors.grey[300],
               ),
               Image.network(
-                widget.model!.sellerAvatarUrl!,
+                widget.model!.thumbnailUrl!,
                 height: 220.0,
                 fit: BoxFit.cover,
               ),
@@ -44,7 +44,7 @@ class _SellersDesignWidgetState extends State<SellersDesignWidget> {
                 height: 1.0,
               ),
               Text(
-                widget.model!.sellerName!,
+                widget.model!.title!,
                 style: const TextStyle(
                   color: Colors.cyan,
                   fontSize: 20,
@@ -52,7 +52,7 @@ class _SellersDesignWidgetState extends State<SellersDesignWidget> {
                 ),
               ),
               Text(
-                widget.model!.sellerEmail!,
+                widget.model!.shortInfo!,
                 style: const TextStyle(
                   color: Colors.grey,
                   fontSize: 12,
