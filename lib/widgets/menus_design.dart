@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:food_users_app/mainscreens/items_screen.dart';
+import 'package:food_users_app/mainScreens/items_screen.dart';
 import 'package:food_users_app/models/menus.dart';
-//import 'package:food_users_app/models/sellers.dart';
 
 class MenusDesignWidget extends StatefulWidget {
   Menus? model;
   BuildContext? context;
+
   MenusDesignWidget({this.model, this.context});
+
   @override
   _MenusDesignWidgetState createState() => _MenusDesignWidgetState();
 }
@@ -17,17 +18,15 @@ class _MenusDesignWidgetState extends State<MenusDesignWidget> {
     return InkWell(
       onTap: () {
         Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (c) => ItemsScreen(model: widget.model),
-          ),
-        );
+            context,
+            MaterialPageRoute(
+                builder: (c) => ItemsScreen(model: widget.model)));
       },
       splashColor: Colors.amber,
       child: Padding(
-        padding: EdgeInsets.all(5.0),
+        padding: const EdgeInsets.all(5.0),
         child: Container(
-          height: 285,
+          height: 280,
           width: MediaQuery.of(context).size.width,
           child: Column(
             children: [
@@ -38,15 +37,15 @@ class _MenusDesignWidgetState extends State<MenusDesignWidget> {
               ),
               Image.network(
                 widget.model!.thumbnailUrl!,
-                height: 210.0,
+                height: 220.0,
                 fit: BoxFit.cover,
               ),
-              SizedBox(
-                height: 2.0,
+              const SizedBox(
+                height: 1.0,
               ),
               Text(
                 widget.model!.menuTitle!,
-                style: TextStyle(
+                style: const TextStyle(
                   color: Colors.cyan,
                   fontSize: 20,
                   fontFamily: "Train",
@@ -54,10 +53,9 @@ class _MenusDesignWidgetState extends State<MenusDesignWidget> {
               ),
               Text(
                 widget.model!.menuInfo!,
-                style: TextStyle(
+                style: const TextStyle(
                   color: Colors.grey,
                   fontSize: 12,
-                  fontFamily: "Train",
                 ),
               ),
               Divider(

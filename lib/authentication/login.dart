@@ -2,27 +2,28 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:food_users_app/global/global.dart';
-import 'package:food_users_app/mainscreens/home_screen.dart';
-import 'package:food_users_app/widgets/customtextfield.dart';
-import 'package:food_users_app/widgets/error_dialoge.dart';
+import 'package:food_users_app/mainScreens/home_screen.dart';
+import 'package:food_users_app/widgets/custom_text_field.dart';
+import 'package:food_users_app/widgets/error_dialog.dart';
 import 'package:food_users_app/widgets/loading_dialog.dart';
 
 import 'auth_screen.dart';
 
 class LoginScreen extends StatefulWidget {
-  const LoginScreen({super.key});
+  const LoginScreen({Key? key}) : super(key: key);
 
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
+  _LoginScreenState createState() => _LoginScreenState();
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  final GlobalKey<FormState> _formkey = GlobalKey<FormState>();
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
 
   formValidation() {
     if (emailController.text.isNotEmpty && passwordController.text.isNotEmpty) {
+      //login
       loginNow();
     } else {
       showDialog(
@@ -40,9 +41,10 @@ class _LoginScreenState extends State<LoginScreen> {
         context: context,
         builder: (c) {
           return LoadingDialog(
-            message: "Checking Credentials.",
+            message: "Checking Credentials",
           );
         });
+
     User? currentUser;
     await firebaseAuth
         .signInWithEmailAndPassword(
@@ -78,22 +80,24 @@ class _LoginScreenState extends State<LoginScreen> {
         await sharedPreferences!.setString("name", snapshot.data()!["name"]);
         await sharedPreferences!
             .setString("photoUrl", snapshot.data()!["photoUrl"]);
+
         List<String> userCartList = snapshot.data()!["userCart"].cast<String>();
         await sharedPreferences!.setStringList("userCart", userCartList);
+
         Navigator.pop(context);
         Navigator.push(
-            context, MaterialPageRoute(builder: (c) => HomeScreen()));
+            context, MaterialPageRoute(builder: (c) => const HomeScreen()));
       } else {
         firebaseAuth.signOut();
         Navigator.pop(context);
-
         Navigator.push(
-            context, MaterialPageRoute(builder: (c) => authscreen()));
+            context, MaterialPageRoute(builder: (c) => const AuthScreen()));
+
         showDialog(
             context: context,
             builder: (c) {
               return ErrorDialog(
-                message: "No user Exists.Try again",
+                message: "No record found.",
               );
             });
       }
@@ -117,7 +121,7 @@ class _LoginScreenState extends State<LoginScreen> {
             ),
           ),
           Form(
-            key: _formkey,
+            key: _formKey,
             child: Column(
               children: [
                 CustomTextField(
@@ -129,27 +133,30 @@ class _LoginScreenState extends State<LoginScreen> {
                 CustomTextField(
                   data: Icons.lock,
                   controller: passwordController,
-                  hintText: " Password",
+                  hintText: "Password",
                   isObsecre: true,
                 ),
               ],
             ),
           ),
           ElevatedButton(
-              child: Text(
-                "Login",
-                style:
-                    TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+            child: const Text(
+              "Login",
+              style: TextStyle(
+                color: Colors.white,
+                fontWeight: FontWeight.bold,
               ),
-              style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.teal[900],
-                padding: EdgeInsets.symmetric(horizontal: 60, vertical: 10),
-              ),
-              onPressed: () {
-                formValidation();
-              }),
-          SizedBox(
-            height: 20,
+            ),
+            style: ElevatedButton.styleFrom(
+              primary: Colors.cyan,
+              padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 10),
+            ),
+            onPressed: () {
+              formValidation();
+            },
+          ),
+          const SizedBox(
+            height: 30,
           ),
         ],
       ),
