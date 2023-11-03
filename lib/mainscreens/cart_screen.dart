@@ -115,6 +115,7 @@ class _CartScreenState extends State<CartScreen> {
           Align(
             alignment: Alignment.bottomLeft,
             child: FloatingActionButton.extended(
+              heroTag: "btnl",
               label: const Text(
                 "Clear Cart",
                 style: TextStyle(fontSize: 16),
@@ -134,6 +135,7 @@ class _CartScreenState extends State<CartScreen> {
           Align(
             alignment: Alignment.bottomLeft,
             child: FloatingActionButton.extended(
+              heroTag: "btn2",
               label: const Text(
                 "Check Out",
                 style: TextStyle(fontSize: 16),
