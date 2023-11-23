@@ -7,6 +7,7 @@ import 'package:food_users_app/assistantMethods/total_amount.dart';
 import 'package:food_users_app/mainScreens/address_screen.dart';
 import 'package:food_users_app/models/items.dart';
 import 'package:food_users_app/splashScreen/splash_screen.dart';
+import 'package:food_users_app/widgets/app_bar.dart';
 import 'package:food_users_app/widgets/cart_item_design.dart';
 import 'package:food_users_app/widgets/progress_bar.dart';
 import 'package:food_users_app/widgets/text_widget_header.dart';
@@ -59,7 +60,7 @@ class _CartScreenState extends State<CartScreen> {
           },
         ),
         title: const Text(
-          "Get Fed",
+          "iFood",
           style: TextStyle(fontSize: 45, fontFamily: "Signatra"),
         ),
         centerTitle: true,
@@ -115,7 +116,7 @@ class _CartScreenState extends State<CartScreen> {
           Align(
             alignment: Alignment.bottomLeft,
             child: FloatingActionButton.extended(
-              heroTag: "btnl",
+              heroTag: "btn1",
               label: const Text(
                 "Clear Cart",
                 style: TextStyle(fontSize: 16),

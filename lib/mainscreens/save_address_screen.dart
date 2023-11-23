@@ -47,7 +47,9 @@ class SaveAddressScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: SimpleAppBar(),
+      appBar: SimpleAppBar(
+        title: 'Get Fed',
+      ),
       floatingActionButton: FloatingActionButton.extended(
         label: const Text("Save Now"),
         icon: const Icon(Icons.save),

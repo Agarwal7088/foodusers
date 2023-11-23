@@ -1,10 +1,13 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
+import 'package:food_users_app/global/global.dart';
 import 'package:food_users_app/models/items.dart';
 import 'package:food_users_app/models/menus.dart';
 import 'package:food_users_app/widgets/app_bar.dart';
 import 'package:food_users_app/widgets/items_design.dart';
+import 'package:food_users_app/widgets/sellers_design.dart';
+import 'package:food_users_app/widgets/my_drawer.dart';
 import 'package:food_users_app/widgets/progress_bar.dart';
 import 'package:food_users_app/widgets/text_widget_header.dart';
 

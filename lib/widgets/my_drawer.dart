@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:food_users_app/authentication/auth_screen.dart';
 import 'package:food_users_app/global/global.dart';
+import 'package:food_users_app/mainScreens/home_screen.dart';
+import 'package:food_users_app/mainScreens/my_orders_screen.dart';
 
 class MyDrawer extends StatelessWidget {
   @override
@@ -63,7 +65,10 @@ class MyDrawer extends StatelessWidget {
                     "Home",
                     style: TextStyle(color: Colors.black),
                   ),
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (c) => const HomeScreen()));
+                  },
                 ),
                 const Divider(
                   height: 10,
@@ -79,7 +84,10 @@ class MyDrawer extends StatelessWidget {
                     "My Orders",
                     style: TextStyle(color: Colors.black),
                   ),
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (c) => MyOrdersScreen()));
+                  },
                 ),
                 const Divider(
                   height: 10,
