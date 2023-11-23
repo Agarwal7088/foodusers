@@ -1,10 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:food_users_app/assistantMethods/assistant_methods.dart';
 import 'package:food_users_app/global/global.dart';
-import 'package:food_users_app/mainscreens/home_screen.dart';
+
+import 'home_screen.dart';
 
 class PlacedOrderScreen extends StatefulWidget {
   String? addressID;
@@ -18,7 +18,7 @@ class PlacedOrderScreen extends StatefulWidget {
 }
 
 class _PlacedOrderScreenState extends State<PlacedOrderScreen> {
-  String orderId = DateTime.now().microsecondsSinceEpoch.toString();
+  String orderId = DateTime.now().millisecondsSinceEpoch.toString();
 
   addOrderDetails() {
     writeOrderDetailsForUser({
@@ -28,7 +28,7 @@ class _PlacedOrderScreenState extends State<PlacedOrderScreen> {
       "productIDs": sharedPreferences!.getStringList("userCart"),
       "paymentDetails": "Cash on Delivery",
       "orderTime": orderId,
-      "isSuccess": "isSuccess",
+      "isSuccess": true,
       "sellerUID": widget.sellerUID,
       "riderUID": "",
       "status": "normal",
@@ -42,7 +42,7 @@ class _PlacedOrderScreenState extends State<PlacedOrderScreen> {
       "productIDs": sharedPreferences!.getStringList("userCart"),
       "paymentDetails": "Cash on Delivery",
       "orderTime": orderId,
-      "isSuccess": "isSuccess",
+      "isSuccess": true,
       "sellerUID": widget.sellerUID,
       "riderUID": "",
       "status": "normal",
@@ -51,17 +51,15 @@ class _PlacedOrderScreenState extends State<PlacedOrderScreen> {
       clearCartNow(context);
       setState(() {
         orderId = "";
-        Navigator.push(
-            context, MaterialPageRoute(builder: (context) => HomeScreen()));
+        Navigator.push(context,
+            MaterialPageRoute(builder: (context) => const HomeScreen()));
         Fluttertoast.showToast(
-            msg: "Congratulations, Order has been placed syccessfully.");
+            msg: "Congratulations, Order has been placed successfully.");
       });
     });
   }
 
-  Future writeOrderDetailsForUser(
-    Map<String, dynamic> data,
-  ) async {
+  Future writeOrderDetailsForUser(Map<String, dynamic> data) async {
     await FirebaseFirestore.instance
         .collection("users")
         .doc(sharedPreferences!.getString("uid"))
@@ -70,9 +68,7 @@ class _PlacedOrderScreenState extends State<PlacedOrderScreen> {
         .set(data);
   }
 
-  Future writeOrderDetailsForSeller(
-    Map<String, dynamic> data,
-  ) async {
+  Future writeOrderDetailsForSeller(Map<String, dynamic> data) async {
     await FirebaseFirestore.instance
         .collection("orders")
         .doc(orderId)

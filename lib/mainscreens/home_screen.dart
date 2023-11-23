@@ -3,10 +3,12 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:food_users_app/assistantMethods/assistant_methods.dart';
+import 'package:food_users_app/authentication/auth_screen.dart';
+import 'package:food_users_app/global/global.dart';
 import 'package:food_users_app/models/sellers.dart';
+import 'package:food_users_app/widgets/sellers_design.dart';
 import 'package:food_users_app/widgets/my_drawer.dart';
 import 'package:food_users_app/widgets/progress_bar.dart';
-import 'package:food_users_app/widgets/sellers_design.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);

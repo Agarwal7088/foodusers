@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:food_users_app/mainScreens/item_detail_screen.dart';
 import 'package:food_users_app/models/items.dart';
+import 'package:food_users_app/models/sellers.dart';
 
 class ItemsDesignWidget extends StatefulWidget {
   Items? model;

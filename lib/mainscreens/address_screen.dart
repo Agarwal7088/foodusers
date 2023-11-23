@@ -2,13 +2,12 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:food_users_app/assistantMethods/address_changer.dart';
 import 'package:food_users_app/global/global.dart';
+import 'package:food_users_app/mainScreens/save_address_screen.dart';
 import 'package:food_users_app/models/address.dart';
 import 'package:food_users_app/widgets/address_design.dart';
 import 'package:food_users_app/widgets/progress_bar.dart';
 import 'package:food_users_app/widgets/simple_app_bar.dart';
 import 'package:provider/provider.dart';
-
-import 'save_address_screen.dart';
 
 class AddressScreen extends StatefulWidget {
   final double? totalAmount;
@@ -24,7 +23,9 @@ class _AddressScreenState extends State<AddressScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: SimpleAppBar(),
+      appBar: SimpleAppBar(
+        title: "Get Fed",
+      ),
       floatingActionButton: FloatingActionButton.extended(
         label: const Text("Add New Address"),
         backgroundColor: Colors.cyan,

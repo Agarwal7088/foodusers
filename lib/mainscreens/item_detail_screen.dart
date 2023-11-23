@@ -3,7 +3,6 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:food_users_app/assistantMethods/assistant_methods.dart';
 import 'package:food_users_app/models/items.dart';
 import 'package:food_users_app/widgets/app_bar.dart';
-
 import 'package:number_inc_dec/number_inc_dec.dart';
 
 class ItemDetailsScreen extends StatefulWidget {
